@@ -106,27 +106,9 @@
 
 
 
-////////////////////////////////////////////////////////////////////////////////////
-    $i = 0;
-    
 
     //$pdf->Output("CLUBES_UVOC.pdf","I");
     $pdf->Output();
-
-
-
-
-
-
-
-
-
-
-
-
-//a
-
-
 
 
     function inscrito_estacion($estacion, $id_miembro, $conexion){
