@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-07-2022 a las 15:48:04
--- Versión del servidor: 10.4.17-MariaDB
--- Versión de PHP: 7.3.26
+-- Tiempo de generación: 25-07-2022 a las 14:30:27
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,10 +43,13 @@ INSERT INTO `estaciones` (`id_estaciones`, `nombre`, `cupos`, `cupos_vol`) VALUE
 (2, 'Masajes', '150', '15'),
 (3, 'Vacunación', '0', '0'),
 (4, 'Asesoría legal', '60', '6'),
-(5, 'Psicología', '0', '0'),
+(5, 'Psicología', '30', '3'),
 (6, 'Mega ropero', '0', '0'),
 (7, 'Peluquería', '120', '12'),
-(8, 'Barbería', '120', '12');
+(8, 'Barbería', '120', '12'),
+(9, 'Nutrición', '800', '80'),
+(10, 'Citología', '25', '2.5'),
+(11, 'Dermatología', '10', '1');
 
 -- --------------------------------------------------------
 
@@ -71,11 +74,11 @@ INSERT INTO `inscripcion_estaciones` (`id_ie`, `id_estaciones`, `id_miembro`, `i
 (10, 4, 311, 3),
 (11, 7, 311, 3),
 (12, 8, 311, 3),
-(13, 1, 311, 3),
-(14, 2, 311, 3),
-(15, 4, 311, 3),
-(16, 7, 311, 3),
-(17, 8, 311, 3);
+(18, 1, 312, 3),
+(19, 2, 312, 3),
+(20, 5, 312, 3),
+(21, 7, 312, 3),
+(22, 8, 312, 3);
 
 -- --------------------------------------------------------
 
@@ -206,7 +209,8 @@ INSERT INTO `miembros` (`id_miembro`, `codigo`, `cedula`, `nombres`, `apellidos`
 (283, 'A0102', '123123123', 'ASDASD', 'ASDASDASD', '1994-12-20', 'M', '', '', '', ''),
 (284, 'A0103', '564564', 'QSDASD ', 'SDASD ', '1994-12-20', 'F', '', '', '', ''),
 (286, 'A0001', '24022510121', 'LIAM', 'FERNANDEZ', '1994-12-20', 'M', '(0412) 519-7309', '50', '20', 'ASDASDASDASD '),
-(311, 'A0104', '121231092381', 'ALSDJAKSDJ', 'JASLKDJASLKDJ', '1994-12-20', 'M', '(0412) 519-7309', '80', '156', 'BARRIO LASDLASAS');
+(311, 'A0104', '121231092381', 'ALSDJAKSDJ', 'JASLKDJASLKDJ', '1994-12-20', 'M', '(0412) 519-7309', '80', '156', 'BARRIO LASDLASAS'),
+(312, 'A0105', '12236770', 'JUANA', 'PEREZ', '1995-12-20', 'F', '(0412) 123-4585', '85', '165', 'BARRIO LA JUAN PABLO, SECTOR EL RIO CASA 5 DIAGONAL AL PARQUE');
 
 -- --------------------------------------------------------
 
@@ -277,19 +281,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `estaciones`
 --
 ALTER TABLE `estaciones`
-  MODIFY `id_estaciones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_estaciones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `inscripcion_estaciones`
 --
 ALTER TABLE `inscripcion_estaciones`
-  MODIFY `id_ie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_ie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `miembros`
 --
 ALTER TABLE `miembros`
-  MODIFY `id_miembro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=312;
+  MODIFY `id_miembro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=313;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
