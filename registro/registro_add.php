@@ -71,6 +71,13 @@
 		            //Recorro todos los elementos
 		            for($i=0; $i<$longitud; $i++){
 		                $id_estacion = $_POST['estaciones'][$i];
+
+		                $sql_name = "SELECT nombre FROM estaciones WHERE id_estaciones=$id_estacion";
+		                $query_name = mysqli_query($conexion, $sql_name);
+		                $row_name = mysqli_fetch_assoc($query_name);
+		                $name_estacion = $row_name["nombre"];
+		                $estaciones_asignadas = $estaciones_asignadas." - ".$name_estacion." <br>";
+
 		                $update = "INSERT INTO inscripcion_estaciones VALUES (NULL, '$id_estacion', '$id', $id_vol)";
 						mysqli_query($conexion, $update);
 		            }
@@ -163,6 +170,8 @@
 								<div class="card-body col-md-6">
 									<div class="alert alert-warning">
 										<h5><i class="icon fas fa-check"></i> Código de: <?php echo $nombres." ".$apellidos ?> <b><?php echo "A".$string ?></b></h5>
+
+										<h3>Estaciones inscritas: </br> <?php echo $estaciones_asignadas ?></h3>
 										
 									</div>
 								</div>
