@@ -23,6 +23,10 @@
 			include('registro/registro_search.php');
 		break;
 
+		case 'registro_estaciones_extra':
+			include('registro/registro_estaciones_extra.php');
+		break;
+
 
 		case 'estaciones_view':
 			include('estaciones/estaciones_view.php');

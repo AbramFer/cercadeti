@@ -87,7 +87,7 @@
                             <i class="nav-icon fas fa-file-pdf"></i>
                             <p>Listado PDF</p>
                             <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">2</span>
+                            <span class="badge badge-info right">3</span>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
@@ -100,6 +100,13 @@
                                 <a href="reportes/reporte_estaciones_excel.php" target="_blank" class="nav-link">
                                     <i class="nav-icon fas fa-file"></i>
                                     <p>Estaciones</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="reportes/reporte_cruz_roja.php" target="_blank" class="nav-link">
+                                    <i class="nav-icon fas fa-file"></i>
+                                    <p>Listado cruz roja</p>
                                 </a>
                             </li>
                         </ul>

@@ -10,6 +10,7 @@
 		$sql = "SELECT * FROM miembros WHERE codigo BETWEEN 'A".$min_rango."' AND 'A".$max_rango."' ORDER BY codigo ASC";
 	} else {
 		$sql = "SELECT * FROM miembros ORDER BY codigo ASC";
+		$extra = true;
 	}
 		$query = mysqli_query($conexion, $sql);
 
@@ -94,6 +95,11 @@
 												<a class="btn btn-danger btn-sm" href="#" onclick="eliminar(<?php echo $row["id_miembro"] ?>, <?php echo $fila ?>)">
 													<i class="fas fa-trash"></i>
 												</a>
+												<?php if ($extra): ?>
+												<a class="btn btn-warning btn-sm" href="?type=registro_estaciones_extra&id_miembro=<?php echo $row['id_miembro'] ?>">
+													<i class="fas fa-plus"></i>
+												</a>
+												<?php endif ?>
 											</td>
 										</tr>
 										<?php 
