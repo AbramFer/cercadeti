@@ -1,6 +1,6 @@
 <?php
 
-//require("../funciones_generales.php");
+require("../funciones_generales.php");
 require '../conexion/aut_config.inc.php';
 //require '../tool/utilidades.php';
 $conexion = mysqli_connect("$sql_host", "$sql_usuario", "$sql_pass", "$sql_db");
@@ -87,13 +87,26 @@ $bordes_laterales_simples = array(
         ),
     ),
 );
+
+
+$bordes_totales = array(
+    "borders" => array(
+        "allBorders" => array(
+            'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+            'color' => ['argb' => '#000000'],
+        )
+    ),
+);
+
+
+
 $sheet = $spreadsheet->getActiveSheet();
 
 $sheet->getColumnDimension('A')->setWidth(10);
-$sheet->getColumnDimension('B')->setWidth(12);
+$sheet->getColumnDimension('B')->setWidth(15);
 $sheet->getColumnDimension('C')->setWidth(60);
 $sheet->getColumnDimension('D')->setWidth(10);
-$sheet->getColumnDimension('E')->setWidth(10);
+$sheet->getColumnDimension('E')->setWidth(12);
 $sheet->getColumnDimension('F')->setWidth(20);
 $sheet->getColumnDimension('G')->setWidth(60);
 
@@ -105,32 +118,56 @@ $sheet->getColumnDimension('G')->setWidth(60);
 /*$sheet->mergeCells('A2:C2');
 $sheet->mergeCells('A3:C3');*/
 
+$sheet->setCellValue('A1', 'Cerca de ti Guanare - 2022');
+$sheet->setCellValue('A2', 'Listado completo');
+
+$sheet->getStyle("A1:R2")->applyFromArray($bordes_totales);
+$sheet->getStyle("A1:R2")->applyFromArray($centrado);
+$sheet->getStyle("A1:R2")->applyFromArray($negrita);
+
+$fila = 3;
 //Primera fila
-$sheet->setCellValue('A2', 'Cód: ');
-$sheet->setCellValue('B2', 'Cédula: ');
-$sheet->setCellValue('C2', 'Nombre: ');
-$sheet->setCellValue('D2', 'Edad: ');
-$sheet->setCellValue('E2', 'Sexo: ');
-$sheet->setCellValue('F2', 'Teléfono: ');
-$sheet->setCellValue('G2', 'Dirección: ');
+$sheet->setCellValue('A'.$fila, 'Cód: ');
+$sheet->setCellValue('B'.$fila, 'Cédula: ');
+$sheet->setCellValue('C'.$fila, 'Nombre: ');
+$sheet->setCellValue('D'.$fila, 'Edad: ');
+$sheet->setCellValue('E'.$fila, 'Sexo: ');
+$sheet->setCellValue('F'.$fila, 'Teléfono: ');
+$sheet->setCellValue('G'.$fila, 'Dirección: ');
 
 $sql2 = "SELECT * FROM estaciones ORDER BY id_estaciones";
 $query2 = mysqli_query($conexion, $sql2);
+$numrow_estaciones = mysqli_num_rows($query2);
 
-$letra = "H";
+$letra = "G";
 while ($row2 = mysqli_fetch_assoc($query2)) {
     $nombre = $row2["nombre"];
 
-	$sheet->setCellValue($letra.'2', $nombre);
 	$letra++;
-    //$pdf->Cell(7,-20,$pdf->RotatedText($pdf->getX()+4,$pdf->getY()-1,utf8_decode($nombre),90),1,0,'C',0);
+    $sheet->getStyle($letra.$fila)->applyFromArray($centrado);
+	$sheet->setCellValue($letra.$fila, $nombre);
+
 }
+
+
+$sheet->getStyle('H'.$fila.":".$letra.$fila)->getAlignment()->setTextRotation(90);
+
+$sheet->getStyle("A".$fila.":".$letra.$fila)->applyFromArray($bordes_totales);
+$sheet->getStyle("A".$fila.":".$letra.$fila)->applyFromArray($negrita);
+
+//membrete
+$sheet->mergeCells("A1:".$letra."1");
+$sheet->mergeCells("A2:".$letra."2");
 
 $sql = "SELECT * FROM miembros ORDER BY codigo";
 $query = mysqli_query($conexion, $sql);
 
-$i = 3;
+//$fila++;
+$fila_aux = $fila;
+
 while ($row = mysqli_fetch_array($query)){
+    $fila++;
+
     $id = $row["id_miembro"];
     $codigo = $row["codigo"];
     $cedula = $row["cedula"];
@@ -143,34 +180,68 @@ while ($row = mysqli_fetch_array($query)){
     $direccion = $row["direccion"];
     $edad = CalculaEdad2($fecha_nacimiento);
 
-    $sheet->setCellValue('A'.$i,utf8_decode($codigo));
-    $sheet->setCellValue('B'.$i,utf8_decode($cedula));
-    $sheet->setCellValue('C'.$i,utf8_decode($nombre));
-    $sheet->setCellValue('D'.$i,$edad." Años");
-    $sheet->setCellValue('E'.$i,utf8_decode($sexo));
-    $sheet->setCellValue('F'.$i,utf8_decode($telefono));
-    $sheet->setCellValue('G'.$i,utf8_decode($direccion));
+    $sheet->setCellValue('A'.$fila,utf8_decode($codigo));
+    $sheet->setCellValue('B'.$fila,utf8_decode($cedula." "));
+    $sheet->setCellValue('C'.$fila,utf8_decode($nombre));
+    $sheet->setCellValue('D'.$fila,$edad." Años");
+    $sheet->setCellValue('E'.$fila,utf8_decode(se_otro($sexo)));
+    $sheet->setCellValue('F'.$fila,utf8_decode($telefono));
+    $sheet->setCellValue('G'.$fila,utf8_decode($direccion));
 
     $query3 = mysqli_query($conexion, $sql2);
 
-	$letra = "H";
+	$letra = "G";
     while ($row3 = mysqli_fetch_assoc($query3)) {
         $id_estaciones = $row3["id_estaciones"];
 
-    	$sheet->setCellValue($letra.''.$i,utf8_decode(inscrito_estacion($id_estaciones, $id, $conexion)));
-        //$pdf->Cell(7,3,utf8_decode(inscrito_estacion($id_estaciones, $id, $conexion)),1,0,'C',0);//
+        $bo = inscrito_estacion($id_estaciones, $id, $conexion);
 
         $letra++;
+    	$sheet->setCellValue($letra.$fila,utf8_decode($bo));
+        $sheet->getStyle($letra.$fila)->applyFromArray($centrado);
+        //$pdf->Cell(7,3,utf8_decode(inscrito_estacion($id_estaciones, $id, $conexion)),1,0,'C',0);//
+
     }
 
-    $i++;
 }
 
-function CalculaEdad2($fecha) {
-	list($Y,$m,$d) = explode("-",$fecha);
-	$edad = ( date("md") < $m.$d ? date("Y")-$Y-1 : date("Y")-$Y );
-	return $edad;
+$sheet->getStyle("A".$fila_aux.":".$letra.$fila)->applyFromArray($bordes_totales);
+
+
+
+$query3 = mysqli_query($conexion, $sql2);
+$fila++;
+$letra = "G";
+
+$sheet->setCellValue($letra.$fila, "Totales: ");
+$sheet->getStyle($letra.$fila)->applyFromArray($derecha);
+$sheet->getStyle($letra.$fila)->applyFromArray($bordes_totales);
+$sheet->getStyle($letra.$fila)->applyFromArray($negrita);
+
+
+while ($row3 = mysqli_fetch_assoc($query3)) {
+    $id_estaciones = $row3["id_estaciones"];
+
+    $sql4 = "SELECT count(id_ie) as cuenta FROM inscripcion_estaciones WHERE id_estaciones=".$id_estaciones;
+    $qr = mysqli_query($conexion, $sql4);
+    $rqr = mysqli_fetch_assoc($qr);
+    $cantidad = $rqr["cuenta"];
+
+    $letra++;
+    $fila_aux++;
+    $sheet->getStyle($letra.$fila)->applyFromArray($centrado);
+    $sheet->getStyle($letra.$fila)->applyFromArray($bordes_totales);
+    $sheet->getStyle($letra.$fila)->applyFromArray($negrita);
+    $sheet->setCellValue($letra.$fila, $cantidad);
+
 }
+
+
+
+
+
+
+
 
 function inscrito_estacion($estacion, $id_miembro, $conexion){
     $sql = "SELECT * FROM inscripcion_estaciones WHERE id_miembro=$id_miembro AND id_estaciones=$estacion";
@@ -192,12 +263,8 @@ mkdir("xls/", 0777, true);
 $file = 'xls/todos.xlsx';
 $writer->save($file);
 
-//header("Location: ../index2.php?type=ordenes_extra_gestion");
+header("Location: ".$file);
 //echo "<script> window.location='../?type=ordenes'; </script>";
-
-
-
-
 
 
 ?>

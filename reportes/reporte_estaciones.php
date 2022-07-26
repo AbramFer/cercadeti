@@ -71,6 +71,7 @@
         $pdf->Cell(17,3,utf8_decode("Teléfono"),1,0,'L',0);//
         $pdf->Cell(80,3,utf8_decode("Dirección"),1,1,'L',0);//
 
+
         $sql = "SELECT * FROM miembros, inscripcion_estaciones WHERE miembros.id_miembro=inscripcion_estaciones.id_miembro AND inscripcion_estaciones.id_estaciones=$id_estaciones ORDER BY miembros.codigo";
         $query = mysqli_query($conexion, $sql);
 
@@ -101,6 +102,8 @@
             $pdf->Cell(80,3,utf8_decode($direccion),1,1,'L',0);//
 
         }
+
+        
 
     }
 

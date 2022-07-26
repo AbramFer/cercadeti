@@ -5,6 +5,15 @@
 		return $edad;
 	}
 
+	function se_otro($valor){
+		if ($valor=="M") {
+			return "Masculino";
+		} else {
+			return "Femenino";
+		}
+
+	} 
+
 	function se($valor){
 		if ($valor=="M") {
 			echo "Masculino";

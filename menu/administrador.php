@@ -91,13 +91,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="reportes/reporte_todos.php" target="_blank" class="nav-link">
+                                <a href="reportes/reporte_todos_excel.php" target="_blank" class="nav-link">
                                     <i class="nav-icon fas fa-file"></i>
                                     <p>Todos</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="reportes/reporte_estaciones.php" target="_blank" class="nav-link">
+                                <a href="reportes/reporte_estaciones_excel.php" target="_blank" class="nav-link">
                                     <i class="nav-icon fas fa-file"></i>
                                     <p>Estaciones</p>
                                 </a>
