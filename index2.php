@@ -41,25 +41,7 @@
     <meta name="author" content="Abraham Fernandez" />
 	<title>Gestión Cerca de ti MPV</title>
     
-    <link rel="shortcut icon" href="componentes_mios/banco_imagenes/pp.jpg" />
-	
-	<link rel="apple-touch-icon" sizes="57x57" href="componentes_mios/bancodeimagenes/favicon/apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="componentes_mios/bancodeimagenes/favicon/apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="componentes_mios/bancodeimagenes/favicon/apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="componentes_mios/bancodeimagenes/favicon/apple-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="componentes_mios/bancodeimagenes/favicon/apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="componentes_mios/bancodeimagenes/favicon/apple-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="componentes_mios/bancodeimagenes/favicon/apple-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="componentes_mios/bancodeimagenes/favicon/apple-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="componentes_mios/bancodeimagenes/favicon/apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192"  href="componentes_mios/bancodeimagenes/favicon/android-icon-192x192.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="componentes_mios/bancodeimagenes/favicon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="componentes_mios/bancodeimagenes/favicon/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="componentes_mios/bancodeimagenes/favicon/favicon-16x16.png">
-	<link rel="manifest" href="componentes_mios/bancodeimagenes/favicon/manifest.json">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="componentes_mios/bancodeimagenes/favicon/ms-icon-144x144.png">
-	<meta name="theme-color" content="#ffffff">
+    
 	
 	<!-- Google Font: Source Sans Pro -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">

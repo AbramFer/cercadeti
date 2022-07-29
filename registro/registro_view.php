@@ -52,8 +52,8 @@
 										<tr>
 											<th>#</th>
 											<th>Código</th>
-											<th>Cédula</th>
 											<th>Nombres y apellidos</th>
+											<th>Cédula</th>
 											<th>Edad</th>
 											<th>Sexo</th>
 											<th>Télefono</th>
@@ -81,8 +81,8 @@
 										<tr>
 											<td><?php echo $num; ?></td>
 											<td><?php echo $codigo; ?></td>
-											<td><?php echo $cedula; ?></td>
 											<td><?php echo $nombre;  ?> </td>
+											<td><?php echo $cedula; ?></td>
 											<td><?php echo $edad." Años";  ?> </td>
 											<td><?php echo se($sexo);  ?> </td>
 											<td><?php echo $telefono;  ?> </td>

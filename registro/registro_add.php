@@ -1,5 +1,5 @@
 <?php 
-
+echo "rangooooooooooooooooooooooooo ".$_SESSION['sesion_rango'];
 
 	if (!cupos($conexion)) {
 		echo "<script>alert('Te has quedado sin cupos');
@@ -94,7 +94,7 @@
 
 
     function cupos($conexion){
-    	if ($_SESSION['sesion_nivel']<3) {
+    	/*if ($_SESSION['sesion_nivel']<3) {
 			$rango = explode("-", $_SESSION['sesion_rango']);
 
 			$length = 4; 
@@ -120,7 +120,9 @@
 			}
 		} else {
 			return true;
-		}
+		}*/
+
+		return true;
     }
 
  ?>
@@ -386,15 +388,15 @@
 
 		$(document).ready(function() {
             $(window).keydown(function(event){
-                if(event.keyCode == 13) {
+                /*if(event.keyCode == 13) {
                     event.preventDefault();
                     return false;
-                }
+                }*/
 
-                if(event.keyCode == 116) {
+                /*if(event.keyCode == 116) {
                     event.preventDefault();
                     return false;
-                }
+                }*/
             });
         });
 
