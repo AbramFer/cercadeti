@@ -59,6 +59,7 @@
 											<th>Télefono</th>
 											<th>Peso</th>
 											<th>Estatura</th>
+											<th>Dirección</th>
 											<th>Acciones</th>
 										</tr>
 									</thead>
@@ -76,6 +77,7 @@
 											$telefono = $row["telefono"];
 											$peso = $row["peso"];
 											$estatura = $row["estatura"];
+											$direccion = $row["direccion"];
 											$edad = CalculaEdad2($fecha_nacimiento);
 										?>
 										<tr>
@@ -88,6 +90,7 @@
 											<td><?php echo $telefono;  ?> </td>
 											<td><?php echo $peso." kg";  ?> </td>
 											<td><?php echo $estatura." cm";  ?> </td>
+											<td><?php echo $direccion  ?> </td>
 											<td class="text-center">
 												<a class="btn btn-info btn-sm" href="?type=registro_edit&id_miembro=<?php echo $row['id_miembro'] ?>">
 												  <i class="fas fa-pencil-alt"></i>
