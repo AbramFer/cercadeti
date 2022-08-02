@@ -54,6 +54,7 @@
 											<th>Código</th>
 											<th>Nombres y apellidos</th>
 											<th>Cédula</th>
+											<th>Fecha</th>
 											<th>Edad</th>
 											<th>Sexo</th>
 											<th>Télefono</th>
@@ -79,13 +80,19 @@
 											$estatura = $row["estatura"];
 											$direccion = $row["direccion"];
 											$edad = CalculaEdad2($fecha_nacimiento);
+
+											$telefono = str_replace('(', '', trim($telefono));
+											$telefono = str_replace(')', '', trim($telefono));
+											$telefono = str_replace(' ', '', trim($telefono));
+											$telefono = str_replace('-', '', trim($telefono));
 										?>
 										<tr>
 											<td><?php echo $num; ?></td>
 											<td><?php echo $codigo; ?></td>
 											<td><?php echo $nombre;  ?> </td>
 											<td><?php echo $cedula; ?></td>
-											<td><?php echo $edad." Años";  ?> </td>
+											<td><?php echo $fecha_nacimiento;  ?> </td>
+											<td><?php echo $edad;  ?> </td>
 											<td><?php echo se($sexo);  ?> </td>
 											<td><?php echo $telefono;  ?> </td>
 											<td><?php echo $peso." kg";  ?> </td>
@@ -201,3 +208,10 @@
 
 
 </script>
+
+
+<?php 
+
+	$response = str_replace('=', '', trim($response));
+
+ ?>
