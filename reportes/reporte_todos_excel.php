@@ -182,7 +182,7 @@ while ($row = mysqli_fetch_array($query)){
 
     $sheet->setCellValue('A'.$fila,utf8_decode($codigo));
     $sheet->setCellValue('B'.$fila,utf8_decode($cedula." "));
-    $sheet->setCellValue('C'.$fila,utf8_decode($nombre));
+    $sheet->setCellValue('C'.$fila,$nombre);
     $sheet->setCellValue('D'.$fila,$edad." Años");
     $sheet->setCellValue('E'.$fila,utf8_decode(se_otro($sexo)));
     $sheet->setCellValue('F'.$fila,utf8_decode($telefono));

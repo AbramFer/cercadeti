@@ -213,7 +213,7 @@ while ($row = mysqli_fetch_array($query)){
     $edad = CalculaEdad2($fecha_nacimiento);
 
     $sheet->setCellValue('A'.$fila,utf8_decode($codigo));
-    $sheet->setCellValue('B'.$fila,utf8_decode($nombre));
+    $sheet->setCellValue('B'.$fila,$nombre);
     $sheet->setCellValue('C'.$fila,utf8_decode($cedula." "));
     $sheet->setCellValue('D'.$fila,$edad." Años");
 

@@ -81,10 +81,10 @@
 											$direccion = $row["direccion"];
 											$edad = CalculaEdad2($fecha_nacimiento);
 
-											$telefono = str_replace('(', '', trim($telefono));
-											$telefono = str_replace(')', '', trim($telefono));
-											$telefono = str_replace(' ', '', trim($telefono));
-											$telefono = str_replace('-', '', trim($telefono));
+											$telefono = str_replace('(', '', $telefono." ");
+											$telefono = str_replace(')', '', $telefono." ");
+											$telefono = str_replace(' ', '', $telefono." ");
+											$telefono = str_replace('-', '', $telefono." ");
 										?>
 										<tr>
 											<td><?php echo $num; ?></td>
@@ -208,10 +208,3 @@
 
 
 </script>
-
-
-<?php 
-
-	$response = str_replace('=', '', trim($response));
-
- ?>
